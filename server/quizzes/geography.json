@@ -1,0 +1,36 @@
+{
+  "id": "geography",
+  "title": "World Geography",
+  "questions": [
+    {
+      "prompt": "What is the largest ocean on Earth?",
+      "options": ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+      "correctIndex": 3,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which country is home to the city of Kyoto?",
+      "options": ["China", "Japan", "Thailand", "South Korea"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the capital city of Canada?",
+      "options": ["Toronto", "Vancouver", "Ottawa", "Montreal"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which continent is the Sahara Desert in?",
+      "options": ["Asia", "Africa", "South America", "Australia"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "The Andes Mountains are primarily in which region?",
+      "options": ["South America", "Eastern Europe", "Central Africa", "Southeast Asia"],
+      "correctIndex": 0,
+      "timeLimitSec": 20
+    }
+  ]
+}
