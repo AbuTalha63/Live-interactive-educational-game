@@ -1,0 +1,41 @@
+{
+  "id": "demo",
+  "title": "Demo Quiz",
+  "questions": [
+    {
+      "prompt": "Which HTTP method is used to create a resource?",
+      "options": ["GET", "POST", "DELETE", "HEAD"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which port does HTTPS use by default?",
+      "options": ["80", "8080", "443", "22"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What does CSS stand for?",
+      "options": [
+        "Computer Style Sheets",
+        "Creative Style Sheets",
+        "Cascading Style Sheets",
+        "Colorful Style Sheets"
+      ],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which data structure uses LIFO (Last In, First Out)?",
+      "options": ["Queue", "Stack", "Array", "Linked List"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the return type of typeof NaN in JavaScript?",
+      "options": ["undefined", "NaN", "object", "number"],
+      "correctIndex": 3,
+      "timeLimitSec": 20
+    }
+  ]
+}
