@@ -1,0 +1,36 @@
+{
+  "id": "java",
+  "title": "Java Basics",
+  "questions": [
+    {
+      "prompt": "Which keyword is used to create a subclass in Java?",
+      "options": ["implements", "extends", "inherits", "super"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which method is the usual entry point of a Java application?",
+      "options": ["start()", "run()", "main()", "init()"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which type stores a whole number primitive in Java?",
+      "options": ["int", "String", "boolean", "char[]"],
+      "correctIndex": 0,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which collection does not allow duplicate elements?",
+      "options": ["ArrayList", "LinkedList", "HashSet", "Vector"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the value of a boolean variable initialized to its default?",
+      "options": ["true", "false", "null", "0"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    }
+  ]
+}

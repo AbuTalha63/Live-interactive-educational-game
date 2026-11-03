@@ -8,6 +8,9 @@ const QUIZZES = [
   { id: 'demo', title: 'Demo Quiz', description: 'HTTP, CSS, and JavaScript basics' },
   { id: 'science', title: 'Science Basics', description: 'Explore physics, biology, and chemistry' },
   { id: 'geography', title: 'World Geography', description: 'Discover countries, landmarks, and oceans' },
+  { id: 'maths', title: 'Maths Fundamentals', description: 'Practice arithmetic, fractions, and geometry' },
+  { id: 'java', title: 'Java Basics', description: 'Test your knowledge of core Java concepts' },
+  { id: 'python', title: 'Python Basics', description: 'Explore Python syntax and fundamentals' },
 ];
 
 export function Home() {
