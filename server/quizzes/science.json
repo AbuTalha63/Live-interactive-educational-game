@@ -1,0 +1,36 @@
+{
+  "id": "science",
+  "title": "Science Basics",
+  "questions": [
+    {
+      "prompt": "Which planet is known as the Red Planet?",
+      "options": ["Venus", "Mars", "Jupiter", "Mercury"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What gas do plants absorb from the atmosphere?",
+      "options": ["Oxygen", "Nitrogen", "Carbon dioxide", "Hydrogen"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the center of an atom called?",
+      "options": ["Electron", "Nucleus", "Molecule", "Proton"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "At sea level, what is the boiling point of water in Celsius?",
+      "options": ["50°C", "90°C", "100°C", "120°C"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which force keeps planets in orbit around the Sun?",
+      "options": ["Magnetism", "Friction", "Gravity", "Electricity"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "maths",
+  "title": "Maths Fundamentals",
+  "questions": [
+    {
+      "prompt": "What is 12 × 8?",
+      "options": ["84", "96", "108", "88"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is 3/4 written as a percentage?",
+      "options": ["25%", "50%", "75%", "80%"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the perimeter of a square with sides of 5 cm?",
+      "options": ["10 cm", "20 cm", "25 cm", "15 cm"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the next prime number after 7?",
+      "options": ["9", "10", "11", "13"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Solve for x: x + 9 = 15",
+      "options": ["5", "6", "7", "24"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    }
+  ]
+}

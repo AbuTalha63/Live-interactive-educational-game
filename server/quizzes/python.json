@@ -1,0 +1,36 @@
+{
+  "id": "python",
+  "title": "Python Basics",
+  "questions": [
+    {
+      "prompt": "Which keyword defines a function in Python?",
+      "options": ["func", "function", "def", "lambda"],
+      "correctIndex": 2,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which data type stores an ordered, changeable collection?",
+      "options": ["tuple", "list", "set", "int"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "What is the result of len('quiz')?",
+      "options": ["3", "4", "5", "Error"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which symbol starts a single-line comment in Python?",
+      "options": ["//", "#", "/*", "--"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    },
+    {
+      "prompt": "Which value represents the absence of a value in Python?",
+      "options": ["undefined", "None", "null", "void"],
+      "correctIndex": 1,
+      "timeLimitSec": 20
+    }
+  ]
+}

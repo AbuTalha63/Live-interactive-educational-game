@@ -4,9 +4,19 @@ import { socket } from '../lib/socket';
 import { getOrCreateProfile, calculateLevel, BADGE_DETAILS } from '../lib/profile';
 import { HostCreateResponse, Profile } from '../../../shared/types';
 
+const QUIZZES = [
+  { id: 'demo', title: 'Demo Quiz', description: 'HTTP, CSS, and JavaScript basics' },
+  { id: 'science', title: 'Science Basics', description: 'Explore physics, biology, and chemistry' },
+  { id: 'geography', title: 'World Geography', description: 'Discover countries, landmarks, and oceans' },
+  { id: 'maths', title: 'Maths Fundamentals', description: 'Practice arithmetic, fractions, and geometry' },
+  { id: 'java', title: 'Java Basics', description: 'Test your knowledge of core Java concepts' },
+  { id: 'python', title: 'Python Basics', description: 'Explore Python syntax and fundamentals' },
+];
+
 export function Home() {
   const navigate = useNavigate();
   const [profile, setProfile] = useState<Profile | null>(null);
+  const [selectedQuizId, setSelectedQuizId] = useState(QUIZZES[0].id);
   const [isCreating, setIsCreating] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -18,7 +28,7 @@ export function Home() {
     setIsCreating(true);
     setError(null);
 
-    socket.emit('host:create', { quizId: 'demo' }, (res: HostCreateResponse) => {
+    socket.emit('host:create', { quizId: selectedQuizId }, (res: HostCreateResponse) => {
       setIsCreating(false);
       if (res?.ok && res.code && res.hostKey) {
         sessionStorage.setItem(`hostKey_${res.code}`, res.hostKey);
@@ -42,6 +52,23 @@ export function Home() {
         </p>
 
         {error && <div className="error-banner">{error}</div>}
+
+        <div className="quiz-selector">
+          <label className="form-label" htmlFor="quiz-select">Choose a quiz</label>
+          <select
+            id="quiz-select"
+            className="quiz-select"
+            value={selectedQuizId}
+            onChange={(event) => setSelectedQuizId(event.target.value)}
+          >
+            {QUIZZES.map((quiz) => (
+              <option key={quiz.id} value={quiz.id}>{quiz.title}</option>
+            ))}
+          </select>
+          <p className="quiz-description">
+            {QUIZZES.find((quiz) => quiz.id === selectedQuizId)?.description}
+          </p>
+        </div>
 
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', marginBottom: '2.5rem' }}>
           <button

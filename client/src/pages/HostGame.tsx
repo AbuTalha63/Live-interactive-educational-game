@@ -55,6 +55,7 @@ export function HostGame({ roomState, hostKey }: HostGameProps) {
   const q = roomState.question;
   const totalConnected = roomState.players.filter((p) => p.connected).length;
   const answered = roomState.answeredCount;
+  const totalAnswerCount = roomState.reveal?.counts.reduce((sum, count) => sum + count, 0) ?? 0;
 
   return (
     <div className="host-container">
@@ -147,56 +148,54 @@ export function HostGame({ roomState, hostKey }: HostGameProps) {
             </div>
           </div>
 
-          {/* 4 Colored Options Grid */}
-          <div className="options-grid">
-            {q.options.map((optionText, idx) => {
-              const isCorrect = roomState.reveal && roomState.reveal.correctIndex === idx;
-              const isWrong = roomState.reveal && roomState.reveal.correctIndex !== idx;
-              const pickCount = roomState.reveal ? roomState.reveal.counts[idx] || 0 : 0;
+          {roomState.phase === 'reveal' && roomState.reveal ? (
+            <section className="answer-distribution" aria-labelledby="distribution-title">
+              <div className="distribution-heading">
+                <h2 id="distribution-title">Answer distribution</h2>
+                <span>{totalAnswerCount} responses</span>
+              </div>
+              <div className="distribution-rows">
+                {q.options.map((optionText, idx) => {
+                  const count = roomState.reveal?.counts[idx] || 0;
+                  const percentage = totalAnswerCount ? Math.round((count / totalAnswerCount) * 100) : 0;
+                  const isCorrect = roomState.reveal?.correctIndex === idx;
 
-              return (
-                <div
-                  key={idx}
-                  className={`option-tile option-${idx}`}
-                  style={{
-                    opacity: isWrong ? 0.35 : 1,
-                    transform: isCorrect ? 'scale(1.02)' : 'none',
-                    boxShadow: isCorrect ? '0 0 25px rgba(255, 255, 255, 0.4)' : undefined,
-                    border: isCorrect ? '4px solid white' : 'none',
-                    transition: 'all 0.3s ease',
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-start',
-                    justifyContent: 'space-between',
-                  }}
-                >
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', width: '100%' }}>
-                    <span className="shape-icon">{OPTION_SHAPES[idx]}</span>
-                    <span style={{ fontSize: '1.75rem', fontWeight: 800, flex: 1 }}>{optionText}</span>
-                    {isCorrect && (
-                      <span style={{ fontSize: '2rem' }}>✓</span>
-                    )}
-                  </div>
-
-                  {roomState.reveal && (
-                    <div
-                      style={{
-                        marginTop: '1rem',
-                        background: 'rgba(0, 0, 0, 0.35)',
-                        padding: '0.4rem 1rem',
-                        borderRadius: 'var(--radius-sm)',
-                        fontSize: '1.2rem',
-                        fontWeight: 800,
-                        alignSelf: 'flex-end',
-                      }}
-                    >
-                      {pickCount} {pickCount === 1 ? 'answer' : 'answers'}
+                  return (
+                    <div className="distribution-row" key={idx}>
+                      <div className="distribution-label">
+                        <span className={`distribution-shape option-${idx}`}>{OPTION_SHAPES[idx]}</span>
+                        <span className="distribution-option">{optionText}</span>
+                        {isCorrect && <span className="distribution-correct" aria-label="Correct answer">✓</span>}
+                      </div>
+                      <div
+                        className="distribution-track"
+                        role="progressbar"
+                        aria-label={`${optionText}: ${count} answers, ${percentage}%`}
+                        aria-valuemin={0}
+                        aria-valuemax={100}
+                        aria-valuenow={percentage}
+                      >
+                        <div
+                          className={`distribution-fill option-${idx}`}
+                          style={{ width: `${percentage}%`, animationDelay: `${idx * 100}ms` }}
+                        />
+                      </div>
+                      <span className="distribution-count">{count} <small>({percentage}%)</small></span>
                     </div>
-                  )}
+                  );
+                })}
+              </div>
+            </section>
+          ) : (
+            <div className="options-grid">
+              {q.options.map((optionText, idx) => (
+                <div key={idx} className={`option-tile option-${idx}`}>
+                  <span className="shape-icon">{OPTION_SHAPES[idx]}</span>
+                  <span style={{ fontSize: '1.75rem', fontWeight: 800, flex: 1 }}>{optionText}</span>
                 </div>
-              );
-            })}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
       )}
 
@@ -257,6 +256,21 @@ export function HostGame({ roomState, hostKey }: HostGameProps) {
             justifyContent: 'center',
           }}
         >
+          <div className="confetti" aria-hidden="true">
+            {Array.from({ length: 36 }, (_, index) => (
+              <span
+                key={index}
+                className="confetti-piece"
+                style={{
+                  left: `${(index * 37) % 100}%`,
+                  animationDelay: `${(index % 12) * 0.11}s`,
+                  animationDuration: `${2.8 + (index % 5) * 0.25}s`,
+                  backgroundColor: ['#fbbf24', '#a78bfa', '#f472b6', '#38bdf8', '#4ade80'][index % 5],
+                  transform: `rotate(${(index * 47) % 360}deg)`,
+                }}
+              />
+            ))}
+          </div>
           <h1 style={{ fontSize: '3.5rem', fontWeight: 900, marginBottom: '3rem', letterSpacing: '-0.02em' }}>
             🎉 Quiz Winners!
           </h1>
